@@ -2,12 +2,10 @@ import { useState } from "react";
 
 import ExpenseList from "./components/ExpenseList";
 import ExpenseFilter from "./components/ExpenseFilter";
-import ExpenseForm from './components/EepenseForm'
+import ExpenseForm from './components/ExpenseForm'
 
 import "./App.css";
  
-export const categories = ['Groceries', 'Utilities', 'Entertainment'];
-
 function App() {
   const [expenses, setExpenses] = useState([
     { id: 1, description: "aaa", amount: 10, category: "Entertainment" },
