@@ -2,16 +2,16 @@ import { useState } from "react";
 
 import ExpenseList from "./components/ExpenseList";
 import ExpenseFilter from "./components/ExpenseFilter";
-import ExpenseForm from './components/ExpenseForm'
+import ExpenseForm from "./components/ExpenseForm";
 
 import "./App.css";
- 
+
 function App() {
   const [expenses, setExpenses] = useState([
-    { id: 1, description: "aaa", amount: 10, category: "Entertainment" },
-    { id: 2, description: "bbb", amount: 10, category: "Utilities" },
-    { id: 3, description: "ccc", amount: 10, category: "Groceries" },
-    { id: 4, description: "ddd", amount: 10, category: "Utilities" },
+    { id: 1, description: "movies", amount: 10_000, category: "Entertainment" },
+    { id: 2, description: "internet", amount: 280_000, category: "Utilities" },
+    { id: 3, description: "meat", amount: 93_000, category: "Groceries" },
+    { id: 4, description: "water bill", amount: 624_000, category: "Utilities" },
   ]);
 
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -20,9 +20,16 @@ function App() {
     : expenses;
   return (
     <>
-    <div className="mb-5">
-      <ExpenseForm />
-    </div> 
+      <div className="mb-5">
+        <ExpenseForm
+          onSubmitHandler={(newExpense) =>
+            setExpenses([
+              ...expenses,
+              { ...newExpense, id: expenses.length + 1 }, // we don't get id in 
+            ])
+          }
+        />
+      </div>
       <div className="mb-3">
         <ExpenseFilter onSelectCategory={(item) => setSelectedCategory(item)} />
       </div>

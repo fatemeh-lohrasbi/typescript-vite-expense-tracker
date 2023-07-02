@@ -27,7 +27,7 @@ export default function ExpenseList({ expenses, onDelete }: Props) {
           {expenses.map((expense) => (
             <tr key={expense.id}>
               <td>{expense.description}</td>
-              <td>{expense.amount}</td>
+              <td>${expense.amount.toLocaleString('en-US')}</td>
               <td>{expense.category}</td>
               <td>
                 <button
@@ -47,7 +47,7 @@ export default function ExpenseList({ expenses, onDelete }: Props) {
               $
               {expenses
                 .reduce((acc, expense) => expense.amount + acc, 0)
-                .toFixed(2)}
+                .toLocaleString('en-US')}
             </td>
             <td></td>
             <td></td>
